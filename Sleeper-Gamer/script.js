@@ -223,15 +223,15 @@ pontuador = () => {
 
         //TEMPO POR NÍVEL
         if(nivel == 2){
-            interval = setInterval(timerNv2, 100);
+            interval = setInterval(timerNv2, 1000);
         }else if(nivel == 3){
-            interval = setInterval(timerNv3, 100);
+            interval = setInterval(timerNv3, 1000);
         }else if(nivel == 4){
-            interval = setInterval(timerNv4, 100);
+            interval = setInterval(timerNv4, 1000);
         }else if(nivel == 5){
-            interval = setInterval(timerNv5, 100);
+            interval = setInterval(timerNv5, 1000);
         }else if(nivel == 6){
-            interval = setInterval(timerNv6, 100);
+            interval = setInterval(timerNv6, 1000);
         }
     }
 
@@ -241,15 +241,34 @@ pontuador = () => {
 
 /*5-FUNÇÃO ENCERRA O JOGO AO CLICAR NO BTN ERRADO*/
 gameOver = () => {
-    //Parar cronometro
+    //PARA CRONOMETRO
     clearInterval(interval);
     milis = 0;
     segs = 0; 
     mins = 0;
-    document.getElementById('crono').innerText = 'Game Over!';
-    document.getElementById('crono').style.color = 'red';
+    //ZERA CRONOMETRO
+    document.getElementById('crono').innerHTML = '';
+    
+    document.getElementById('initJogo').innerText = 'RESTART';
 
-    //Exibir um modal
+    //ALTERA TEXTO DO ALVO PARA "GAME OVER"
+    document.getElementById('alvoTitle').innerText = ' ';
+    document.getElementById('alvo').innerText = 'Game Over!';
+    document.getElementById('alvo').style.color = 'red';
+
+    //DESABILITA BOTÕES
+    document.getElementById('9').disabled = true;
+    document.getElementById('8').disabled = true;
+    document.getElementById('7').disabled = true;
+    document.getElementById('6').disabled = true;
+    document.getElementById('5').disabled = true;
+    document.getElementById('4').disabled = true;
+    document.getElementById('3').disabled = true;
+    document.getElementById('2').disabled = true;
+    document.getElementById('1').disabled = true;
+
+    //RESETA JOGO AO CLICAR NO BOTÃO RESTART
+    document.getElementById('initJogo').onclick = () => {window.location = 'index.html';}
 
 }
 
@@ -565,7 +584,7 @@ setAlvo = () => {
 
 /*2-FUNÇÃO QUE INICIA O JOGO*/
 initJogo = () => {
-    interval = setInterval(timerNv1, 100);
+    interval = setInterval(timerNv1, 500);
     setAlvo();
 }
 
